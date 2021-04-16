@@ -1,0 +1,370 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "City Clients API",
+    "description": "City and Client API registration",
+    "license": {
+      "name": "MIT",
+      "url": "http://opensource.org/license/MIT"
+    }
+  },
+
+  "tags": [
+    {
+      "name": "Cities",
+      "description": "Create/Read Cities in the system"
+    },
+    {
+      "name": "Clients",
+      "description": "CRUD clients in the system"
+    }
+  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/cities": {
+      "post": {
+        "tags": ["Cities"],
+        "summary": "Create a new city in system",
+        "requestBody": {
+          "description": "City Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/City"
+              }
+            }
+          }
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/name-cities/{name}": {
+      "parameters": [
+        {
+          "name": "name",
+          "in": "path",
+          "required": true,
+          "description": "Name of the city that we want to match",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Cities"],
+        "summary": "Get city with given NAME",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "description": "City with name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/City"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/uf-cities/{uf}": {
+      "parameters": [
+        {
+          "name": "uf",
+          "in": "path",
+          "required": true,
+          "description": "UF of the city that we want to match",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Cities"],
+        "summary": "Get city with given UF",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uf",
+            "required": true,
+            "description": "City with uf"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/City"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+
+    "/clients": {
+      "post": {
+        "tags": ["Clients"],
+        "summary": "Create a new client in system",
+        "requestBody": {
+          "description": "Client Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Client"
+              }
+            }
+          }
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/clients/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of the client that we want to match",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Clients"],
+        "summary": "Get client with given ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Client with id",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Client"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete client with given ID",
+        "tags": ["Clients"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete Client with id",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update client with given ID",
+        "tags": ["Clients"],
+        "requestBody": {
+          "description": "Client Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/ClientPut"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Client with new values of name",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Client"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/name-clients/{name}": {
+      "parameters": [
+        {
+          "name": "name",
+          "in": "path",
+          "required": true,
+          "description": "Name of the client that we want to match",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Clients"],
+        "summary": "Get client with given NAME",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "description": "Client with name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Client"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "id": {
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "City": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "uf": {
+          "type": "string"
+        }
+      }
+    },
+    "Cities": {
+      "type": "object",
+      "properties": {
+        "clients": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/City"
+          }
+        }
+      }
+    },
+    "Client": {
+      "type": "object",
+      "properties": {
+        "full_name": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "year_of_birth": {
+          "type": "date"
+        },
+        "age": {
+          "type": "integer"
+        },
+        "city_where_live": {
+          "type": "string"
+        }
+      }
+    },
+    "Clients": {
+      "type": "object",
+      "properties": {
+        "clients": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Client"
+          }
+        }
+      }
+    },
+    "ClientPut": {
+      "type": "object",
+      "properties": {
+        "full_name": {
+          "type": "string"
+        }
+      }
+    },
+    "ClientsPut": {
+      "type": "object",
+      "properties": {
+        "clients": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/ClientPut"
+          }
+        }
+      }
+    }
+  }
+}
