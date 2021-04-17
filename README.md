@@ -1,16 +1,18 @@
-# CityClient-api
+# geolocation-api
 
 - NodeJs API using Express
-- Database using MongoDB
 - TDD using Jest
-- Containerization using Docker
 - Documentation using Swagger
 - CI using GitHub Actions
 
 ## Run
 
 ```bash
-sudo docker-compose up --build
+yarn && yarn dev
+
+or
+
+npm i && npm run dev
 ```
 
 ## Get Documentation
@@ -21,7 +23,7 @@ http://localhost:3333/api-docs/
 
 ## Postman Collection
 
-https://www.getpostman.com/collections/c4cb3ea834bc2b0f2a0d
+https://www.getpostman.com/collections/0a386fb464bddba31236
 
 ## Run Tests
 
