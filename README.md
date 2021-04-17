@@ -9,9 +9,11 @@
 
 ```bash
 yarn && yarn dev
+```
 
 or
 
+```bash
 npm i && npm run dev
 ```
 
